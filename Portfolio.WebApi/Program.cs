@@ -15,12 +15,14 @@ builder.Services.AddSwaggerGen();
 
 
 // Secret Manager path to db connection string;
-string secretDBConnectionPath = "DBConnection:PostgresWebPortfolio";
+string secretDBConnectionPath = "dbconnpostgresql";
 
 
 // Register the DbContext
 builder.Services.AddPostgreDbContext<PostgresWebPortfolioContext>(secretDBConnectionPath);
 builder.Services.AddScoped<IClient, ClientRepository>(); 
+
+
 
 var app = builder.Build();
 
@@ -30,6 +32,8 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI();
 }
+
+app.MapGet("/", () => "Hello World!");
 
 app.UseHttpsRedirection();
 

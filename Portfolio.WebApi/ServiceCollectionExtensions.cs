@@ -6,7 +6,7 @@ public static class ServiceCollectionExtensions
 {
     public static IServiceCollection AddPostgreDbContext<TContext>(
         this IServiceCollection services,
-        string configurationPath = "DBConnection:PostgresWebPortfolio")
+        string configurationPath = "dbconnpostgresql")
         where TContext : DbContext
     {
         return services.AddDbContext<TContext>((sp, options) => {
